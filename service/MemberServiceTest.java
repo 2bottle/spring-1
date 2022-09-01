@@ -11,12 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
 
-    MemberService memberService = new MemberService();
-    MemoryMemberRepository memberRepository = new MemoryMemberRepository();
+    MemberService memberService;
+    MemoryMemberRepository memberRepository;
 
-    @AfterEach
-    public void afterEach(){
-        memberRepository.clearStore();
+    @BeforeEach
+    public void beforeEach(){
+        memberRepository = new MemoryMemberRepository();
+        memberService = new MemberService(memberRepository);
     }
 
     @Test
