@@ -13,14 +13,13 @@ import static org.assertj.core.api.Assertions.*;
 
 class MemoryMemberRepositoryTest {
 
-    MemberService memberService;
-    MemoryMemberRepository memberRepository;
+    MemoryMemberRepository memberRepository = new MemoryMemberRepository();
 
-    @BeforeEach
-    public void beforeEach(){
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository);
+    @AfterEach
+    public void afterEach(){
+        memberRepository.clearStore();
     }
+
 
     @AfterEach
     public void afterEach(){
